@@ -31,13 +31,13 @@ def baseband(Fs, SymbolRate, Point, Type='BPSK'):
     if(Type=='BPSK'):
         for j in range(int(Point/SamplePerBit)):
             for k in range(SamplePerBit):
-                out_i[j*SamplePerBit+k] = npz_stream[j]
-                out_q[j*SamplePerBit+k] = npz_stream[j]
+                out_i[j*SamplePerBit+k] = 1/np.sqrt(2)*npz_stream[j]
+                out_q[j*SamplePerBit+k] = 1/np.sqrt(2)*npz_stream[j]
     elif(Type=='QPSK'):
         for j in range(int(Point/SamplePerBit)):
             for k in range(SamplePerBit):
-                out_i[j*SamplePerBit+k] = npz_stream[2*j]
-                out_q[j*SamplePerBit+k] = npz_stream[2*j+1]
+                out_i[j*SamplePerBit+k] = 1/np.sqrt(2)*npz_stream[2*j]
+                out_q[j*SamplePerBit+k] = 1/np.sqrt(2)*npz_stream[2*j+1]
     return [out_i, out_q]
 
 def pn9(Point):

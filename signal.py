@@ -15,3 +15,9 @@ class fir:
         self.buff[0] = indata
         outdata = np.sum(self.buff * self.coef)
         return outdata
+
+    def filter_array(self, indata):
+        outdata = np.zeros(indata.shape[0])
+        for j in range(indata.shape[0]):
+            outdata[j] = self.filter(indata[j])
+        return outdata
